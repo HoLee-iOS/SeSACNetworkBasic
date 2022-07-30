@@ -28,7 +28,7 @@ class LocationViewController: UIViewController {
             }
             
         }
-        
+         
         
         requestAuthorization()
         
