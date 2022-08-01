@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Fqc-WY-gmP">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="IIb-hS-dSp">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
@@ -47,6 +47,76 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="131.8840579710145" y="61.607142857142854"/>
+        </scene>
+        <!--Beer View Controller-->
+        <scene sceneID="TxE-ol-Y2a">
+            <objects>
+                <viewController id="IIb-hS-dSp" customClass="BeerViewController" customModule="SeSACNetworkBasic" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="s0t-AB-Y8X">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="U9M-e5-vSV">
+                                <rect key="frame" x="20" y="128" width="374" height="311.5"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="U9M-e5-vSV" secondAttribute="height" multiplier="1.2" id="3My-cC-PXK"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sAg-zN-PGv">
+                                <rect key="frame" x="20" y="459.5" width="374" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="KQa-9n-ggD"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xeq-OO-Z7U">
+                                <rect key="frame" x="20" y="509.5" width="374" height="322.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bk8-fc-SQ6">
+                                <rect key="frame" x="20" y="64" width="374" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="UVJ-P4-2hp"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                                <connections>
+                                    <action selector="randomBeerButtonClicked:" destination="IIb-hS-dSp" eventType="touchUpInside" id="2MO-uB-FsJ"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="sMz-P4-80p"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Xeq-OO-Z7U" firstAttribute="leading" secondItem="sMz-P4-80p" secondAttribute="leading" constant="20" id="0Vc-nQ-dHe"/>
+                            <constraint firstItem="sMz-P4-80p" firstAttribute="bottom" secondItem="Xeq-OO-Z7U" secondAttribute="bottom" constant="30" id="0qF-cq-Pn3"/>
+                            <constraint firstItem="Xeq-OO-Z7U" firstAttribute="top" secondItem="sAg-zN-PGv" secondAttribute="bottom" constant="20" id="2BZ-8e-aoc"/>
+                            <constraint firstItem="sMz-P4-80p" firstAttribute="trailing" secondItem="U9M-e5-vSV" secondAttribute="trailing" constant="20" id="5qm-o2-RGL"/>
+                            <constraint firstItem="sMz-P4-80p" firstAttribute="trailing" secondItem="bk8-fc-SQ6" secondAttribute="trailing" constant="20" id="C1w-aa-Mlu"/>
+                            <constraint firstItem="bk8-fc-SQ6" firstAttribute="top" secondItem="sMz-P4-80p" secondAttribute="top" constant="20" id="DLf-h6-wWD"/>
+                            <constraint firstItem="U9M-e5-vSV" firstAttribute="top" secondItem="bk8-fc-SQ6" secondAttribute="bottom" constant="20" id="E0o-A1-tAP"/>
+                            <constraint firstItem="sMz-P4-80p" firstAttribute="trailing" secondItem="Xeq-OO-Z7U" secondAttribute="trailing" constant="20" id="En4-Ep-R4S"/>
+                            <constraint firstItem="bk8-fc-SQ6" firstAttribute="leading" secondItem="sMz-P4-80p" secondAttribute="leading" constant="20" id="M6c-Td-Y6e"/>
+                            <constraint firstItem="U9M-e5-vSV" firstAttribute="leading" secondItem="sMz-P4-80p" secondAttribute="leading" constant="20" id="NET-Sc-hoJ"/>
+                            <constraint firstItem="sMz-P4-80p" firstAttribute="trailing" secondItem="sAg-zN-PGv" secondAttribute="trailing" constant="20" id="PyA-Me-mWx"/>
+                            <constraint firstItem="sAg-zN-PGv" firstAttribute="top" secondItem="U9M-e5-vSV" secondAttribute="bottom" constant="20" id="VER-JG-Gxn"/>
+                            <constraint firstItem="sAg-zN-PGv" firstAttribute="leading" secondItem="sMz-P4-80p" secondAttribute="leading" constant="20" id="kYn-Gb-SHY"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="beerDescription" destination="Xeq-OO-Z7U" id="z4C-DW-epc"/>
+                        <outlet property="beerImage" destination="U9M-e5-vSV" id="csu-ez-49E"/>
+                        <outlet property="beerName" destination="sAg-zN-PGv" id="0ge-yV-VeP"/>
+                        <outlet property="randomButton" destination="bk8-fc-SQ6" id="sEG-tO-MmK"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="n3t-U8-i6r" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="131.8840579710145" y="757.36607142857144"/>
         </scene>
         <!--Lotto View Controller-->
         <scene sceneID="agV-TJ-JHh">
