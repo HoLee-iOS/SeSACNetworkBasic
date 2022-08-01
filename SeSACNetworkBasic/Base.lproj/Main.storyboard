@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="LmV-XB-pyX">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Fqc-WY-gmP">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
@@ -65,7 +65,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="7Uy-Wd-aWf">
-                                <rect key="frame" x="35.5" y="438" width="343" height="20.5"/>
+                                <rect key="frame" x="58.5" y="438" width="297" height="20.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="88" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t0j-gp-sCC">
                                         <rect key="frame" x="0.0" y="0.0" width="21" height="20.5"/>
@@ -109,17 +109,12 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="88" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ufc-vj-lpM">
-                                        <rect key="frame" x="322" y="0.0" width="21" height="20.5"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
                                 </subviews>
                             </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="2z9-w2-Uk6"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="Hwm-5t-cSe" firstAttribute="top" secondItem="2z9-w2-Uk6" secondAttribute="top" constant="20" id="8AC-WP-QKT"/>
                             <constraint firstItem="Hwm-5t-cSe" firstAttribute="leading" secondItem="2z9-w2-Uk6" secondAttribute="leading" constant="20" id="ErD-8n-f3V"/>
@@ -127,12 +122,27 @@
                             <constraint firstItem="7Uy-Wd-aWf" firstAttribute="centerY" secondItem="Cho-LI-npM" secondAttribute="centerY" id="NbS-zz-P49"/>
                             <constraint firstItem="7Uy-Wd-aWf" firstAttribute="centerX" secondItem="Cho-LI-npM" secondAttribute="centerX" id="rSp-0r-uye"/>
                         </constraints>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="QWE-2o-aHD" appends="YES" id="YgL-aL-kKe"/>
+                        </connections>
                     </view>
                     <connections>
                         <outlet property="numberTextField" destination="Hwm-5t-cSe" id="BlF-Jk-06D"/>
+                        <outletCollection property="lottoNumbers" destination="t0j-gp-sCC" collectionClass="NSMutableArray" id="7Os-C9-T3K"/>
+                        <outletCollection property="lottoNumbers" destination="235-S2-hf6" collectionClass="NSMutableArray" id="X0V-EJ-byf"/>
+                        <outletCollection property="lottoNumbers" destination="bEA-tX-mOf" collectionClass="NSMutableArray" id="LUa-zv-ho6"/>
+                        <outletCollection property="lottoNumbers" destination="2h3-fN-7ZM" collectionClass="NSMutableArray" id="14u-vE-RTc"/>
+                        <outletCollection property="lottoNumbers" destination="kpE-0P-3H4" collectionClass="NSMutableArray" id="gWC-2t-5sL"/>
+                        <outletCollection property="lottoNumbers" destination="mJb-c6-iGI" collectionClass="NSMutableArray" id="BXb-TR-Qii"/>
+                        <outletCollection property="lottoNumbers" destination="Nfr-rs-oYU" collectionClass="NSMutableArray" id="tU3-tq-beY"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UOs-Jm-xY3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="QWE-2o-aHD">
+                    <connections>
+                        <action selector="outOfPickerView:" destination="Fqc-WY-gmP" id="BMo-74-S0m"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="988.40579710144937" y="61.607142857142854"/>
         </scene>

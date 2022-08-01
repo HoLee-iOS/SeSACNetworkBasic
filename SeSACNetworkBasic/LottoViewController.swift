@@ -7,6 +7,11 @@
 
 import UIKit
 
+//1. 임포트
+//내부 먼저 임포트 한후에 한칸 띄고 외부 라이브러리는 알파벳 순으로 정렬하는 편
+import Alamofire
+import SwiftyJSON
+
 class LottoViewController: UIViewController {
 
     @IBOutlet weak var numberTextField: UITextField!
@@ -15,7 +20,9 @@ class LottoViewController: UIViewController {
     var lottoPickerView = UIPickerView()
     //코드로 뷰를 만드는 기능이 훨씬 더 많이 남아있음
     
-    let numberList: [Int] = Array(1...1025).reversed()
+    @IBOutlet var lottoNumbers: [UILabel]!
+    
+    let numberList: [Int] = Array(1...986).reversed()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,6 +36,61 @@ class LottoViewController: UIViewController {
         
         lottoPickerView.delegate = self
         lottoPickerView.dataSource = self
+        
+        //1. 가장 최근 회차인 986회차를 조회하여 서버통신
+        requestLotto(number: 986)
+        
+    }
+    
+    @IBAction func outOfPickerView(_ sender: UITapGestureRecognizer) {
+        
+        view.endEditing(true)
+        
+    }
+    func requestLotto(number: Int) {
+        
+        //AF: 200~299 status code
+        //validate에서 status code의 성공 범위를 설정해줄 수 있음(유효성 설정)
+        //알라모파이어가 AF의 접두어로 사용하게 된 변경사항은 알라모파이어 라이브러리 깃헙의 리드미, issues에서 확인해볼 수 있음
+        //알라모파이어6에서는 responseJSON이 deprecated 될 예정
+        //지금은 일단 고려할 필요 없음
+        let url = "https://www.dhlottery.co.kr/common.do?method=getLottoNumber&drwNo=\(number)"
+        AF.request(url, method: .get).validate(statusCode: 200..<400).responseJSON { [self] response in
+            switch response.result {
+                //성공케이스에 대한 설정
+            case .success(let value):
+                let json = JSON(value)
+                print("JSON: \(json)")
+                
+                let bonus = json["bnusNo"].intValue
+                print(bonus)
+                
+                let date = json["drwNoDate"].stringValue
+                print(date)
+                
+                self.numberTextField.text = date //클로저 안에서 텍스트필드가 명확하게 클래스 안에 있는 것을 알려줘야하기 때문에 self 키워드 사용
+                
+                let no1 = json["drwtNo1"].intValue
+                let no2 = json["drwtNo2"].intValue
+                let no3 = json["drwtNo3"].intValue
+                let no4 = json["drwtNo4"].intValue
+                let no5 = json["drwtNo5"].intValue
+                let no6 = json["drwtNo6"].intValue
+                let no7 = json["bnusNo"].intValue
+                
+                let nums: [Int] = [no1, no2, no3, no4, no5, no6, no7]
+                
+                for i in 0...6 {
+                    
+                    lottoNumbers[i].text = String(nums[i])
+                    
+                }
+                
+                //실패케이스에 대한 설정
+            case .failure(let error):
+                print(error)
+            }
+        }
         
     }
     
@@ -47,7 +109,10 @@ extension LottoViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        numberTextField.text = "\(numberList[row])회차"
+        requestLotto(number: numberList[row]) //회차에 따른 날짜를 텍스트필드에 보여줌
+        
+        view.endEditing(true)
+        //numberTextField.text = "\(numberList[row])회차" //먼저 나오고 그 후에 덮어짐
     }
     
     //각각 열마다 어떤 글자 넣어줄것인지

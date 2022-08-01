@@ -9,6 +9,8 @@ import UIKit
 
 class LocationViewController: UIViewController {
     
+    //LocationViewController.self 메타 타입 => "LocationViewController"
+    
     //Notification
     //1. 객체 생성
     let notificationCenter = UNUserNotificationCenter.current()
@@ -30,10 +32,10 @@ class LocationViewController: UIViewController {
         }
          
         
-        requestAuthorization()
-        
+        requestAuthorization()        
         
     }
+    
     
     @IBAction func notificationButtonClicked(_ sender: UIButton) {
         
@@ -43,7 +45,8 @@ class LocationViewController: UIViewController {
     
     //Notification
     //2. 권한 요청
-    func requestAuthorization() {
+    //아래와 같이 private을 사용하면 다른 파일에서 사용 못하게 가능함
+    private func requestAuthorization() {
         
         let authorizationOptions = UNAuthorizationOptions(arrayLiteral: .alert, .badge, .sound)
         
