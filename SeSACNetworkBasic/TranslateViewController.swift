@@ -7,6 +7,9 @@
 
 import UIKit
 
+import Alamofire
+import SwiftyJSON
+
 //컨트롤에 기반
 //UIButton, UITextField > Action
 //UITextView, UISearchBar, UIPickerView > X
@@ -30,9 +33,47 @@ class TranslateViewController: UIViewController {
         
         userInputTextView.font = UIFont(name: "OKCHAN", size: 17) //폰트를 만들때 맞춤법에 맞지 않는 글자들은 다 지움
         
+        requestTranslatedData()
+        
+    }
+
+    func requestTranslatedData() {
+        
+        let url = "\(EndPoint.translateURL)"
+        
+        let parameter = ["source": "ko", "target": "en", "text": "안녕하세요 저는 고래밥을 좋아합니다"]
+        
+        let header: HTTPHeaders = ["X-Naver-Client-Id": APIKey.NAVER_ID, "X-Naver-Client-Secret": APIKey.NAVER_SECRET]
+                
+        AF.request(url, method: .post, parameters: parameter, headers: header).validate(statusCode: 200..<400).responseJSON { response in
+            switch response.result {
+                //성공케이스에 대한 설정
+            case .success(let value):
+                let json = JSON(value)
+                print("JSON: \(json)")
+                
+                let statusCode = response.response?.statusCode ?? 500
+                
+                if statusCode == 200 {
+                    self.userInputTextView.text = json["message"]["result"]["translatedText"].stringValue
+                } else {
+                    self.userInputTextView.text = json["errorMessage"].stringValue
+                }
+                
+                //실패케이스에 대한 설정
+            case .failure(let error):
+                print(error)
+                
+            }
+        }
+        
     }
     
 }
+
+
+
+
 
 extension TranslateViewController: UITextViewDelegate {
     

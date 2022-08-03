@@ -11,8 +11,10 @@
 		C11F9B2228922372002C57A5 /* LottoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C11F9B2128922372002C57A5 /* LottoViewController.swift */; };
 		C11F9B2428923054002C57A5 /* TranslateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C11F9B2328923054002C57A5 /* TranslateViewController.swift */; };
 		C11F9B2628923A9C002C57A5 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C11F9B2528923A9C002C57A5 /* WebViewController.swift */; };
+		C13497D7289A095200F7D548 /* ImageSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C13497D6289A095200F7D548 /* ImageSearchViewController.swift */; };
 		C141406D28935D6600C90D8A /* LocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C141406C28935D6600C90D8A /* LocationViewController.swift */; };
 		C141406F289384D500C90D8A /* OK CHAN.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C141406E289384D400C90D8A /* OK CHAN.ttf */; };
+		C1537F602898BD2100165555 /* BoxOfficeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1537F5F2898BD2100165555 /* BoxOfficeModel.swift */; };
 		C1B89FE82897527D00723EF3 /* ReusableViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1B89FE72897527D00723EF3 /* ReusableViewProtocol.swift */; };
 		C1B89FEB2897579100723EF3 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1B89FEA2897579100723EF3 /* Constant.swift */; };
 		C1B89FED28975FAA00723EF3 /* UserDefaultsHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1B89FEC28975FAA00723EF3 /* UserDefaultsHelper.swift */; };
@@ -29,6 +31,8 @@
 		C1DE25D12890E1FC003A91DA /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1DE25D02890E1FC003A91DA /* SearchViewController.swift */; };
 		C1DE25D42890E4E1003A91DA /* ListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1DE25D22890E4E1003A91DA /* ListTableViewCell.swift */; };
 		C1DE25D52890E4E1003A91DA /* ListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C1DE25D32890E4E1003A91DA /* ListTableViewCell.xib */; };
+		C1E8F788289A562B0098E93D /* ImageSearchCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1E8F786289A562B0098E93D /* ImageSearchCollectionViewCell.swift */; };
+		C1E8F789289A562B0098E93D /* ImageSearchCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C1E8F787289A562B0098E93D /* ImageSearchCollectionViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,8 +40,10 @@
 		C11F9B2128922372002C57A5 /* LottoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottoViewController.swift; sourceTree = "<group>"; };
 		C11F9B2328923054002C57A5 /* TranslateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslateViewController.swift; sourceTree = "<group>"; };
 		C11F9B2528923A9C002C57A5 /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
+		C13497D6289A095200F7D548 /* ImageSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSearchViewController.swift; sourceTree = "<group>"; };
 		C141406C28935D6600C90D8A /* LocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationViewController.swift; sourceTree = "<group>"; };
 		C141406E289384D400C90D8A /* OK CHAN.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OK CHAN.ttf"; sourceTree = "<group>"; };
+		C1537F5F2898BD2100165555 /* BoxOfficeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoxOfficeModel.swift; sourceTree = "<group>"; };
 		C1B89FE72897527D00723EF3 /* ReusableViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableViewProtocol.swift; sourceTree = "<group>"; };
 		C1B89FEA2897579100723EF3 /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		C1B89FEC28975FAA00723EF3 /* UserDefaultsHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsHelper.swift; sourceTree = "<group>"; };
@@ -53,6 +59,8 @@
 		C1DE25D02890E1FC003A91DA /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		C1DE25D22890E4E1003A91DA /* ListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListTableViewCell.swift; sourceTree = "<group>"; };
 		C1DE25D32890E4E1003A91DA /* ListTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ListTableViewCell.xib; sourceTree = "<group>"; };
+		C1E8F786289A562B0098E93D /* ImageSearchCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSearchCollectionViewCell.swift; sourceTree = "<group>"; };
+		C1E8F787289A562B0098E93D /* ImageSearchCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ImageSearchCollectionViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -138,6 +146,9 @@
 				C1DE25BE2890DD7E003A91DA /* SceneDelegate.swift */,
 				C1DE25C02890DD7E003A91DA /* ViewController.swift */,
 				C1DE25C22890DD7E003A91DA /* Main.storyboard */,
+				C1E8F786289A562B0098E93D /* ImageSearchCollectionViewCell.swift */,
+				C1E8F787289A562B0098E93D /* ImageSearchCollectionViewCell.xib */,
+				C13497D6289A095200F7D548 /* ImageSearchViewController.swift */,
 				C1B89FF62897B45900723EF3 /* BeerViewController.swift */,
 				C141406C28935D6600C90D8A /* LocationViewController.swift */,
 				C11F9B2528923A9C002C57A5 /* WebViewController.swift */,
@@ -145,6 +156,7 @@
 				C1DE25D22890E4E1003A91DA /* ListTableViewCell.swift */,
 				C1DE25D32890E4E1003A91DA /* ListTableViewCell.xib */,
 				C1DE25D02890E1FC003A91DA /* SearchViewController.swift */,
+				C1537F5F2898BD2100165555 /* BoxOfficeModel.swift */,
 				C1DE25C52890DD7F003A91DA /* Assets.xcassets */,
 				C1DE25C72890DD7F003A91DA /* LaunchScreen.storyboard */,
 				C1DE25CA2890DD7F003A91DA /* Info.plist */,
@@ -224,6 +236,7 @@
 				C141406F289384D500C90D8A /* OK CHAN.ttf in Resources */,
 				C1DE25D52890E4E1003A91DA /* ListTableViewCell.xib in Resources */,
 				C1DE25C62890DD7F003A91DA /* Assets.xcassets in Resources */,
+				C1E8F789289A562B0098E93D /* ImageSearchCollectionViewCell.xib in Resources */,
 				C1DE25C42890DD7E003A91DA /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -237,7 +250,9 @@
 			files = (
 				C1DE25C12890DD7E003A91DA /* ViewController.swift in Sources */,
 				C1B89FED28975FAA00723EF3 /* UserDefaultsHelper.swift in Sources */,
+				C13497D7289A095200F7D548 /* ImageSearchViewController.swift in Sources */,
 				C1B89FF72897B45900723EF3 /* BeerViewController.swift in Sources */,
+				C1537F602898BD2100165555 /* BoxOfficeModel.swift in Sources */,
 				C11F9B2628923A9C002C57A5 /* WebViewController.swift in Sources */,
 				C1DE25BD2890DD7E003A91DA /* AppDelegate.swift in Sources */,
 				C1DE25D12890E1FC003A91DA /* SearchViewController.swift in Sources */,
@@ -248,6 +263,7 @@
 				C11F9B2028920CF8002C57A5 /* ViewPresentableProtocol.swift in Sources */,
 				C1B89FE82897527D00723EF3 /* ReusableViewProtocol.swift in Sources */,
 				C1DE25D42890E4E1003A91DA /* ListTableViewCell.swift in Sources */,
+				C1E8F788289A562B0098E93D /* ImageSearchCollectionViewCell.swift in Sources */,
 				C1B89FEB2897579100723EF3 /* Constant.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

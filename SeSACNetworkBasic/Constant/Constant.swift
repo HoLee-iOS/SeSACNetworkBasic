@@ -7,6 +7,24 @@
 
 import Foundation
 
+//이런식으로 키값을 따로 관리한다면 깃헙에 푸쉬할때 해당 파일을 빼고 푸쉬한다면 키값을 못보게 할 수 있음
+struct APIKey {
+    //프로퍼티의 모든 이름을 대문자나 소문자로 표현하면 중요도 명시 가능
+    static let BOXOFFICE = "776d438f33750b3677256948f891dab5"
+    
+    static let NAVER_ID = "0d3qC_zWAffwQvIXmONe"
+    static let NAVER_SECRET = "4NCPw0kB9A"
+}
+
+struct EndPoint {
+    static let boxOfficeURL = "http://kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchDailyBoxOfficeList.json?"
+    static let lottoURL = "https://www.dhlottery.co.kr/common.do?method=getLottoNumber"
+    static let translateURL = "https://openapi.naver.com/v1/papago/n2mt"
+    //뒤에 있는 쿼리는 앱에 따라 정보를 다르게 설정할 가능성이 있기 때문에 공통적인 부분만 여기서 다뤄주고 쿼리문에 대한 정보는 뷰컨에서 상세적으로 표현해서 사용해줌
+    static let imageSearchURL = "https://openapi.naver.com/v1/search/image.json?"
+}
+
+
 //enum StoryboardName: String {
 //    case Main
 //    case Search
