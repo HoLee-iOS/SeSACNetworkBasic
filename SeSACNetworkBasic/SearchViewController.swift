@@ -8,6 +8,7 @@
 import UIKit
 import Alamofire
 import SwiftyJSON
+import JGProgressHUD
 
 /*
  Swift Protocol
@@ -50,6 +51,9 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     @IBOutlet weak var searchTableView: UITableView!
     @IBOutlet weak var searchBar: UISearchBar!
+    
+    //로딩뷰 객체 ProgressView
+    let hud = JGProgressHUD()
     
     //BoxOffice 배열
     var list: [BoxOfficeModel] = []
@@ -106,11 +110,15 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     func requestBoxOffice(text: String) {
         
+        //네트워크 통신 전에 로딩뷰 띄우기
+        hud.show(in: view, animated: true)
+        hud.textLabel.text = "Loading"
+        
         self.list.removeAll()
         
         //인증키 제한
         let url = "\(EndPoint.boxOfficeURL)key=\(APIKey.BOXOFFICE)&targetDt=\(text)"
-        AF.request(url, method: .get).validate().responseJSON { response in
+        AF.request(url, method: .get).validate().responseData { response in
             switch response.result {
                 //성공케이스에 대한 설정
             case .success(let value):
@@ -134,11 +142,19 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
                 //테이블뷰 갱신
                 self.searchTableView.reloadData()
                 
+                //테이블뷰 갱신 시점에서 로딩뷰 사라지기 처리 해주면 됨
+                self.hud.dismiss()
+                
                 print(self.list)
+                
                 
                 //실패케이스에 대한 설정
             case .failure(let error):
                 print(error)
+                
+                //통신 실패시에도 로딩뷰에 대한 처리를 해줘야함
+                self.searchTableView.reloadData()
+                self.hud.dismiss()
                 
             }
         }

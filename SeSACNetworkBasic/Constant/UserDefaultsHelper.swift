@@ -17,27 +17,21 @@ class UserDefaultsHelper {
     
     let userDefaults = UserDefaults.standard //애플이 내부적으로 만들어놓은 싱글톤 패턴
     
-    enum Key: String {
-        case nickname, age
-    }
-    
-    var nickname: String {
+    var drwNo: [Int : [Int]] {
         get {
-            return userDefaults.string(forKey: Key.nickname.rawValue) ?? "대장"
+            if let saveData = userDefaults.object(forKey: "key") as? Data {
+                let decoder = JSONDecoder()
+                if let loadObject = try? decoder.decode([Int:[Int]].self, from: saveData){
+                    return loadObject
+                }
+            }
+            return userDefaults.object(forKey: "key") as? [Int:[Int]] ?? [:]
         }
         set { //연산 프로퍼티 parameter
-            userDefaults.set(newValue, forKey: Key.nickname.rawValue)
+            let encoder = JSONEncoder()
+            if let encoded = try? encoder.encode(newValue) {
+                userDefaults.setValue(encoded, forKey: "key")
+            }
         }
     }
-    
-    var age: Int {
-        get {
-            return userDefaults.integer(forKey: Key.age.rawValue)
-        }
-        set {
-            userDefaults.set(newValue, forKey: Key.age.rawValue)
-        }
-    }
-    
-    
 }

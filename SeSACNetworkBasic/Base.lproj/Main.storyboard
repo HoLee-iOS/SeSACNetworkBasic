@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="jxH-xO-Ean">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Fqc-WY-gmP">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
@@ -355,6 +355,31 @@
                                     <action selector="notificationButtonClicked:" destination="GIb-Kt-zhb" eventType="touchUpInside" id="O56-ta-gOf"/>
                                 </connections>
                             </button>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KTM-e2-iNc">
+                                <rect key="frame" x="93" y="193" width="49" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </switch>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="ngk-QF-Gkr">
+                                <rect key="frame" x="213" y="193" width="131" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <segments>
+                                    <segment title="First"/>
+                                    <segment title="Second"/>
+                                </segments>
+                            </segmentedControl>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sX7-EA-461">
+                                <rect key="frame" x="65" y="274" width="285" height="281"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="H3s-5x-cMd">
+                                <rect key="frame" x="65" y="585" width="285" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                                <connections>
+                                    <action selector="downloadImage:" destination="GIb-Kt-zhb" eventType="touchUpInside" id="QsT-H9-Rsi"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="aHt-T5-o7q"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -364,10 +389,13 @@
                             <constraint firstItem="6NT-Du-E3S" firstAttribute="top" secondItem="aHt-T5-o7q" secondAttribute="top" constant="20" id="hDa-pV-AM7"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="imageView" destination="sX7-EA-461" id="aX3-aS-IHo"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FcA-VS-zHN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3372" y="55"/>
+            <point key="canvasLocation" x="3371.0144927536235" y="54.910714285714285"/>
         </scene>
         <!--Image Search View Controller-->
         <scene sceneID="gm9-sY-wTZ">
@@ -378,7 +406,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="5Rw-UH-Huf">
-                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="i5y-aN-NlI">
                                     <size key="itemSize" width="173" height="178"/>
@@ -388,18 +416,29 @@
                                 </collectionViewFlowLayout>
                                 <cells/>
                             </collectionView>
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="zgg-Pm-m9F">
+                                <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="XUx-Fl-UW3"/>
+                                </constraints>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="EHm-dX-hGm"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="5Rw-UH-Huf" firstAttribute="top" secondItem="EHm-dX-hGm" secondAttribute="top" id="1Ln-bY-FVF"/>
+                            <constraint firstItem="zgg-Pm-m9F" firstAttribute="top" secondItem="EHm-dX-hGm" secondAttribute="top" id="3eq-Qq-zXQ"/>
+                            <constraint firstItem="zgg-Pm-m9F" firstAttribute="leading" secondItem="EHm-dX-hGm" secondAttribute="leading" id="3hX-cN-cgO"/>
+                            <constraint firstItem="zgg-Pm-m9F" firstAttribute="trailing" secondItem="EHm-dX-hGm" secondAttribute="trailing" id="T5h-vG-PUf"/>
                             <constraint firstItem="EHm-dX-hGm" firstAttribute="trailing" secondItem="5Rw-UH-Huf" secondAttribute="trailing" id="d9L-UY-x7x"/>
+                            <constraint firstItem="5Rw-UH-Huf" firstAttribute="top" secondItem="zgg-Pm-m9F" secondAttribute="bottom" id="f9x-fw-a6g"/>
                             <constraint firstItem="EHm-dX-hGm" firstAttribute="bottom" secondItem="5Rw-UH-Huf" secondAttribute="bottom" id="x7N-nn-V85"/>
                             <constraint firstItem="5Rw-UH-Huf" firstAttribute="leading" secondItem="EHm-dX-hGm" secondAttribute="leading" id="xC9-QF-yGZ"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="imageSearchCollectionView" destination="5Rw-UH-Huf" id="zh1-SM-vcy"/>
+                        <outlet property="searchBar" destination="zgg-Pm-m9F" id="rph-dQ-gHq"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BGS-KC-QJ6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

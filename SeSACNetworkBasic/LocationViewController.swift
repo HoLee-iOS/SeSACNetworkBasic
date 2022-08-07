@@ -10,6 +10,7 @@ import UIKit
 class LocationViewController: UIViewController {
     
     //LocationViewController.self 메타 타입 => "LocationViewController"
+    @IBOutlet weak var imageView: UIImageView!
     
     //Notification
     //1. 객체 생성
@@ -36,6 +37,27 @@ class LocationViewController: UIViewController {
         
     }
     
+    @IBAction func downloadImage(_ sender: UIButton) {
+        
+        //킹피셔를 쓰지 않는 방법
+        let url = "https://apod.nasa.gov/apod/image/2208/M13_final2_sinfirma.jpg"
+        print("1", Thread.isMainThread)
+        
+        DispatchQueue.global().async { //동시 여러 작업 가능하게 해줘!
+            
+            print("2", Thread.isMainThread)
+            
+            let data = try! Data(contentsOf: URL(string: url)!)
+            let image = UIImage(data: data)
+            
+            //이미지뷰에 이미지를 넣는 동작은 메인스레드로 동작하게 처리해줌
+            DispatchQueue.main.async {
+
+                print("3", Thread.isMainThread)
+                self.imageView.image = image
+            }
+        }
+    }
     
     @IBAction func notificationButtonClicked(_ sender: UIButton) {
         
