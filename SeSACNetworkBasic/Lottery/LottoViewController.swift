@@ -11,7 +11,6 @@ import UIKit
 //내부 먼저 임포트 한후에 한칸 띄고 외부 라이브러리는 알파벳 순으로 정렬하는 편
 import Alamofire
 import SwiftyJSON
-import SwiftUI
 
 class LottoViewController: UIViewController {
     
@@ -26,28 +25,26 @@ class LottoViewController: UIViewController {
     var numberList: [Int] = Array(1...986).reversed()
     
     //검색했던 회차 값 저장
-    var nos : Int?
-    var numbers : [Int] = []
     
-    let userDefaults = UserDefaults.standard
-    
-    var searchDic: [Int:[Int]] {
-        get {
-            if let saveData = userDefaults.object(forKey: "key") as? Data {
-                let decoder = JSONDecoder()
-                if let loadObject = try? decoder.decode([Int:[Int]].self, from: saveData){
-                    return loadObject
-                }
-            }
-            return userDefaults.object(forKey: "key") as? [Int:[Int]] ?? [:]
-        }
-        set { //연산 프로퍼티 parameter
-            let encoder = JSONEncoder()
-            if let encoded = try? encoder.encode(newValue) {
-                userDefaults.setValue(encoded, forKey: "key")
-            }
-        }
-    }
+//    let userDefaults = UserDefaults.standard
+//
+//    var searchDic: [Int:[Int]] {
+//        get {
+//            if let saveData = userDefaults.object(forKey: "key") as? Data {
+//                let decoder = JSONDecoder()
+//                if let loadObject = try? decoder.decode([Int:[Int]].self, from: saveData){
+//                    return loadObject
+//                }
+//            }
+//            return userDefaults.object(forKey: "key") as? [Int:[Int]] ?? [:]
+//        }
+//        set { //연산 프로퍼티 parameter
+//            let encoder = JSONEncoder()
+//            if let encoded = try? encoder.encode(newValue) {
+//                userDefaults.setValue(encoded, forKey: "key")
+//            }
+//        }
+//    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -95,21 +92,12 @@ class LottoViewController: UIViewController {
                 
                 let new = json["drwNo"].intValue
                 print(new)
-                self.nos = new
                 
                 
                 
                 self.numberTextField.text = date //클로저 안에서 텍스트필드가 명확하게 클래스 안에 있는 것을 알려줘야하기 때문에 self 키워드 사용
                 
-                //                if new != 0 {
-                //
-                //                    for i in 1...new {
-                //
-                //                        numberList[i-1] = i
-                //
-                //                    }
-                //                }
-                
+                                
                 
                 let no1 = json["drwtNo1"].intValue
                 let no2 = json["drwtNo2"].intValue
@@ -120,7 +108,6 @@ class LottoViewController: UIViewController {
                 let no7 = json["bnusNo"].intValue
                 
                 let nums: [Int] = [no1, no2, no3, no4, no5, no6, no7]
-                self.numbers = nums
                 
                 for i in 0...6 {
                     
@@ -128,11 +115,15 @@ class LottoViewController: UIViewController {
                     
                 }
                 
-                var dic: [Int:[Int]] = [ : ]
-                dic.updateValue(nums, forKey: new)
-                print(dic)
-                self.searchDic = dic
-                print(self.searchDic)
+//                var dic: [Int:[Int]] = [ : ]
+//                dic.updateValue(nums, forKey: new)
+//                print(dic)
+                
+//                self.searchDic = dic
+//                print(self.searchDic)
+                
+                UserDefaultsHelper.standard.drwNo.updateValue(nums, forKey: new)
+                print("서버통신함")
                 
                 
                 //실패케이스에 대한 설정
@@ -160,17 +151,20 @@ extension LottoViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         
         
-        if searchDic.keys.contains(numberList[row]) {
+        if UserDefaultsHelper.standard.drwNo[numberList[row]] != nil {
             
             for i in 0...6 {
-                lottoNumbers[i].text = String(searchDic[numberList[row]]![i])
+                lottoNumbers[i].text = String(UserDefaultsHelper.standard.drwNo[numberList[row]]![i])
             }
             
+            print("서버 없어도 됨")
+            
+            
         } else {
-        
+         
             requestLotto(number: numberList[row]) //회차에 따른 날짜를 텍스트필드에 보여줌
             
-        }        
+        }
         
         view.endEditing(true)
         //numberTextField.text = "\(numberList[row])회차" //먼저 나오고 그 후에 덮어짐
